@@ -1,1 +1,1 @@
-print("Welcome to the world of programming!")
+print("Welcome to the world of programming")
