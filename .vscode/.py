@@ -3,7 +3,7 @@ import random
 import turtle 
 turtle.fd(0)
 turtle.speed(0)
-turtle.bgcolor("black")
+turtle.bgcolor("green")
 
 turtle.ht()
 turtle.setundobuffer(1)
