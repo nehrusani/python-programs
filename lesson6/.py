@@ -9,3 +9,8 @@ for i in range (360):
     c = colorsys.hsv_to_rgb(h,1,1)
     h += 1/n
     t.pencolor(c)
+    t.left(1)
+    t.fd(1)
+    for j in range(3):
+        
+        t.circle(100)
