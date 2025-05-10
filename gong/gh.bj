@@ -1,0 +1,11 @@
+# Set the correct password
+correct_password = "my_secret_password"
+
+# Prompt user for password
+entered_password = input("Enter your password: ")
+
+# Check if the password matches
+if entered_password == correct_password:
+    print("Access granted.")
+else:
+    print("Access denied.")
