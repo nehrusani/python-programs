@@ -1,4 +1,4 @@
-"""
+
 #  Interactive program to ask and print result accordingly
 
 x=input("enter a color ")
@@ -8,7 +8,7 @@ elif x == "black":
    print("ok")
 else:   
    print("bad")
-   """
+   
 
 import sys
 x = sys.argv 

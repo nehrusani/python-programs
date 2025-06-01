@@ -1,0 +1,22 @@
+import turtle
+turtle.Screen().setup(580,600)
+turtle.Screen().bgcolor("red")
+polygon = turtle.Turtle()
+polygon.forward(100)
+polygon.left(120)
+polygon.forward(100)
+polygon.left(120)
+polygon.forward(100)
+polygon.penup()
+polygon.right(150)
+polygon.forward(50)
+
+polygon.pendown()
+polygon.right(90)
+polygon.forward(100)
+polygon.right(120)
+polygon.forward(100)
+polygon.right(120)
+polygon.forward(100)
+turtle.done()
+
