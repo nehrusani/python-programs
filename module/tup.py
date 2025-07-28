@@ -1,4 +1,4 @@
-from hello import Hello  # Import the Hello class
-greeter = Hello()
-message = greeter.Hello("Alice")
-print(message)
+#from hello import Hello  # Import the Hello class
+from a import ditya2
+greeter = ditya2()
+print(greeter.math())
