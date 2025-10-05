@@ -1,0 +1,1 @@
+print((lambda x, y: x + y)(int(input("enter a num1 : ")), int(input("enter a num2 : "))))
