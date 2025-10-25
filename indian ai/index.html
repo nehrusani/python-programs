@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian AI Premium</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #ff9933;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #ff9933;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e68a00;
+        }
+
+        #chatSection {
+            display: none;
+            flex-direction: column;
+        }
+
+        #chatBox {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #chatBox p {
+            margin: 5px 0;
+        }
+
+        #aiPrompt {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fffae6;
+            border-radius: 5px;
+            border: 1px solid #ffd699;
+            font-style: italic;
+        }
+
+        #premiumBtn {
+            margin: 10px 0;
+            background: #33cc33;
+        }
+
+        #premiumBtn:hover {
+            background: #28a428;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="loginSection">
+        <h2>Login / Signup</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button id="loginBtn">Login</button>
+        <button id="signupBtn">Signup</button>
+        <p id="loginMessage" style="color:red;"></p>
+    </div>
+
+    <div class="container" id="chatSection">
+        <h2>Indian AI</h2>
+        <div id="chatBox"></div>
+        <div id="aiPrompt">Hello! What do you want to ask today?</div>
+        <input type="text" id="userInput" placeholder="Type your question here">
+        <button id="askBtn">Ask</button>
+        <input type="file" id="imageInput" accept="image/*" style="margin-top:10px;">
+        <button id="micBtn" style="margin-top:10px;">🎤 Speak</button>
+        <button id="premiumBtn">Upgrade to Premium</button>
+        <p id="premiumMessage" style="color:green;"></p>
+    </div>
+
+    <script>
+        let username = '';
+        let premium = false;
+        const loginSection = document.getElementById('loginSection');
+        const chatSection = document.getElementById('chatSection');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const loginMessage = document.getElementById('loginMessage');
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+        const askBtn = document.getElementById('askBtn');
+        const imageInput = document.getElementById('imageInput');
+        const micBtn = document.getElementById('micBtn');
+        const aiPrompt = document.getElementById('aiPrompt');
+        const premiumBtn = document.getElementById('premiumBtn');
+        const premiumMessage = document.getElementById('premiumMessage');
+
+        function appendMessage(sender, text) {
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>${sender}:</strong> ${text}`;
+            chatBox.appendChild(p);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Login
+        loginBtn.addEventListener('click', async () => {
+            username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const res = await fetch('http://localhost:3000/login', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                premium = data.premium;
+                loginSection.style.display = 'none';
+                chatSection.style.display = 'flex';
+                appendMessage('Indian AI', 'Hello! What do you want to ask today?');
+                aiPrompt.innerText = 'Hello! What do you want to ask today?';
+                premiumMessage.innerText = premium ? 'Premium features unlocked' : 'Free version';
+            } else loginMessage.innerText = 'Invalid username/password';
+        });
+
+        // Signup
+        signupBtn.addEventListener('click', async () => {
+            username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const res = await fetch('http://localhost:3000/signup', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                loginMessage.style.color = 'green';
+                loginMessage.innerText = 'Signup successful! You can login now.';
+            } else loginMessage.innerText = 'Username already exists';
+        });
+
+        // Upgrade to Premium (demo)
+        premiumBtn.addEventListener('click', async () => {
+            if (!username) return;
+            const res = await fetch('http://localhost:3000/upgrade', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username })
+            });
+            const data = await res.json();
+            if (data.success) {
+                premium = true;
+                premiumMessage.innerText = 'Premium features unlocked!';
+            }
+        });
+
+        // Ask AI
+        askBtn.addEventListener('click', async () => {
+            const text = userInput.value.trim();
+            if (!text) return;
+            appendMessage('You', text);
+            userInput.value = '';
+            try {
+                const res = await fetch('http://localhost:3000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, message: text })
+                });
+                const data = await res.json();
+                appendMessage('Indian AI', data.reply);
+                aiPrompt.innerText = data.reply;
+                speak(data.reply);
+            } catch {
+                appendMessage('Indian AI', 'Error connecting to AI server.');
+                aiPrompt.innerText = 'Error connecting to AI server.';
+            }
+        });
+
+        // Image Upload
+        imageInput.addEventListener('change', async () => {
+            const file = imageInput.files[0];
+            if (!file) return;
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('username', username);
+            const res = await fetch('http://localhost:3000/upload-image', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await res.json();
+            appendMessage('You', `[Uploaded image: ${file.name}]`);
+            appendMessage('Indian AI', data.reply);
+            aiPrompt.innerText = data.reply;
+            speak(data.reply);
+        });
+
+        // Voice input
+        micBtn.addEventListener('click', () => {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert('Speech recognition not supported.');
+                return;
+            }
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = 'en-IN';
+            recognition.onresult = (event) => {
+                const spokenText = event.results[0][0].transcript;
+                userInput.value = spokenText;
+                askBtn.click();
+            };
+            recognition.start();
+        });
+
+        // Text-to-Speech
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utterance);
+        }
+    </script>
+
+</body>
+
+</html>
+
