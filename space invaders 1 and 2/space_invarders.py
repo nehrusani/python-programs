@@ -13,6 +13,9 @@ ENEMY_SPEED_X = 4
 ENEMY_SPEED_Y = 40
 COLLISION_DISTANCE = 27
 BULLET_SPEED_Y = 10
+WIDTH,HEIGHT = 800,600
+BULLET_HEIGHT = 20
+BULLET_WIDTH = 10
 
 # Initialize Pygame
 pygame.init()
@@ -21,11 +24,11 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # Background
-background = pygame.image.load('background.png')
-
+background = pygame.image.load('space.jpeg')
+background = pygame.transform.scale(background,(WIDTH,HEIGHT))
 # Caption and Icon
 pygame.display.set_caption("Space Invader")
-icon = pygame.image.load('ufo.png')
+icon = pygame.image.load('enemy.png')
 pygame.display.set_icon(icon)
 
 # Player
@@ -51,6 +54,7 @@ for i in range(num_of_enemies):
 
 # Bullet
 bulletImg = pygame.image.load('bullet.png')
+bulletImg = pygame.transform.scale(bulletImg,(20,10)) 
 bulletX = 0
 bulletY = PLAYER_START_Y
 bulletY_change = BULLET_SPEED_Y
