@@ -155,3 +155,17 @@ while running:
     show_score(textX, textY)
     pygame.display.update()
 
+    # Initialize mixer for sound effects
+    pygame.mixer.init()
+
+    # Load sound effects
+
+    # Add these lines in the fire_bullet function after bullet_state = "fire":
+    # Initialize mixer and load sounds
+    pygame.mixer.init()
+    bullet_sound = pygame.mixer.Sound('screm.mp3')
+   
+
+
+    # Quit mixer when game ends
+    pygame.mixer.quit()
