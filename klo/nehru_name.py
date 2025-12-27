@@ -9,8 +9,10 @@ class nehru_name :
            h1 = int(input("Enter second value: "))
            pree = nehru_math.nehru_math(h, h1)
            print(pree.add()) 
-             
+
+            
     def __str__(self):
         if not self.valid:
             return f"Invalid name entered: {self.g}"
         return ""
+
