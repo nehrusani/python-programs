@@ -26,5 +26,5 @@ print("\nAfter discount:")
 p1.apply_discount(10)
 p2.apply_discount(10)
 
-print(f"Laptop new price: {p1.price}")
-print(f"Shoes new price: {p2.price}")
+
+

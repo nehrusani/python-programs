@@ -1,6 +1,7 @@
 # Odd–Even Checker
 
-numbers = input("Enter numbers separated by spaces: ").split()
+#numbers = input("Enter numbers separated by spaces: ").split()
+numbers = [14, 7, 9, 23]
 
 odd_count = 0
 even_count = 0
@@ -14,3 +15,4 @@ for n in numbers:
 
 print("Odd numbers:", odd_count)
 print("Even numbers:", even_count)
+
