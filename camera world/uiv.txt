@@ -1,0 +1,9 @@
+import cv2
+
+cap = cv2.Vediocapture(0)
+ret ,frame = cap.read
+
+if ret:
+  cv2.imwrite("photo.jpg",frame)
+
+cap.release()
