@@ -1,6 +1,6 @@
 mylist = []
 print(mylist,"empty list")
-mylist_2 = ["apple",1,"banana",2]
+mylist_2 = ["apple",1,"banana",2,True,False]
 print(mylist_2)
 mylist_3 = [1,2,3,6,8]
 del mylist_3[3]
