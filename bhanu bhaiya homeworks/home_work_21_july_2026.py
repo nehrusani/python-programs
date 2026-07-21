@@ -1,15 +1,7 @@
-# code one as you said it adds up first 10 numbers
-"""num = 1
-num1 = 2
-num2 = 3 
-num3 = 4
-num4 = 5
-num6 = 6
-num7 = 7
-num8 = 8
-num9 = 9
-num10 = 10
-print(num + num1 + num2+ num3+ num4+ num6+ num7+ num8+ num9+ num10)"""
+"""p = 0
+for i in range(21):
+    p = p+i # p = 10 + 1
+print(p)"""
 
 # code two as you said it swaps variable
 """a = 10
@@ -30,6 +22,16 @@ else:
     print("No vowels found")"""
 
 #code four as you said this pattern
-"""for i in range(1, 4):
-    print("* " * (i * 3))"""
+"""for i in range(3, 0,-1):
+    print("* " * (i * 3))
+print("reverse pattern")"""
+
+string = str(input("enter any type of word or no existing word : "))
+rev    = ""
+for i in range(len(string)-1,-1,-1):
+    #string2 = string + string[i]
+    rev = rev+string[i]
+    #print(string[len(i)-1])
+print(rev)
+print()
 
