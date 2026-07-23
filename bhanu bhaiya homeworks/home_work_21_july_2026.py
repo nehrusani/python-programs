@@ -26,19 +26,31 @@ else:
     print("* " * (i * 3))
 print("reverse pattern")"""
 
-"""string = str(input("enter any type of word or no existing word : "))
-rev    = ""
-for i in range(len(string)-1,-1,-1):
-    #string2 = string + string[i]
-    rev = rev+string[i]
-    #print(string[len(i)-1])
-print(rev)
-print()" """
 
-p = 0
+word = str(input("enter your word : "))  #laptop
+word1 = ""
+for i in range(len(word)-1,-1,-1): #
+    word1 = word1+word[i]
+print("after reverse",word1)
+
+
+
+"""
+sum = 0
 i = 1
-while i <= 10:
-    p += i
-    i += 1
-print(p) 
+while i <= 15:
+    sum += i # p=p+i
+    i += 1  # i=i+1
+print(sum) 
+"""
+
+"""marks = int(input("enter your marks of the test : "))
+if marks >= 90 :
+    print("you stand first ")
+elif marks >= 80 and marks <= 90 :
+    print("you stand second")
+elif marks >= 70 and marks <= 80 :
+    print("you stand third ")
+else:
+    print("you can improve")"""
 
