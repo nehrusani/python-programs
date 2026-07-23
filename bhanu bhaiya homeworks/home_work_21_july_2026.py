@@ -27,11 +27,11 @@ else:
 print("reverse pattern")"""
 
 
-word = str(input("enter your word : "))  #laptop
+"""word = str(input("enter your word : "))  #laptop
 word1 = ""
 for i in range(len(word)-1,-1,-1): #
     word1 = word1+word[i]
-print("after reverse",word1)
+print("after reverse",word1)"""
 
 
 
@@ -47,10 +47,17 @@ print(sum)
 """marks = int(input("enter your marks of the test : "))
 if marks >= 90 :
     print("you stand first ")
-elif marks >= 80 and marks <= 90 :
+elif marks >= 80 and marks < 90 :
     print("you stand second")
-elif marks >= 70 and marks <= 80 :
+elif marks >= 70 and marks < 80 :
     print("you stand third ")
 else:
     print("you can improve")"""
+
+num = 10
+# print 2 times table from 1 to 10
+while num >= 1:
+    print(f"2 x {num} = {2 * num}")
+    num -= 1
+
 
