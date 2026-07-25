@@ -54,10 +54,26 @@ elif marks >= 70 and marks < 80 :
 else:
     print("you can improve")"""
 
-num = 10
+"""num = 10
 # print 2 times table from 1 to 10
 while num >= 1:
     print(f"2 x {num} = {2 * num}")
-    num -= 1
+    num -= 1"""
 
 
+"""tell = input("enter a word : ")
+vowels = "aeiouAEIOU"
+num = 0
+for i in range(len(tell)):
+    if tell[i] in vowels:
+        num += 1
+if num == 0:
+    print("sorry no vowels")
+print(f"Number of vowels: {num}")"""
+
+# pattern: 1\n#2 2\n 3 3 3\n 4 4 4 4\n 5 5 5 5 5
+"""for i in range(1, 6,-1):
+    print(' '.join([str(i)] * i))
+    i -= 1"""
+
+        
