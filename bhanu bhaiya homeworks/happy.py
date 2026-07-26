@@ -31,16 +31,44 @@ Example input: 1 2 3
 Output: [1, 4, 9]
 """
 
-data = input()
-nums = [int(x) for x in data]
-squares = [n*n for n in nums]
-print(squares)
+
 """s = str(input("enter your favourite word : "))
-for ch in s:
-    print(ch)"""
+for ch in range(len(s)-1,-1,-1):
+    print(s[ch])"""
+
+"""s = str(input("enter your favourite word : "))
+vowels = "aeiouAEIOU"
+for ch in s:s:
+        filtered += ch
+reversed_string = filtered[::-1]
+print(reversed_string)
+    if ch not in vowels:
+        print(ch)
+for i in range(len(s)):
+    ch = s[i]
+    if ch != 'a' and ch != 'e' and ch != 'i' and ch != 'o' and ch != 'u' and ch != 'A' and ch != 'E' and ch != 'I' and ch != 'O' and ch != 'U':
+        print(ch)    """
 
 
+"""string = str(input("enter the word : "))
+#lists = ['asdfasdf','second',3,4,'zuhz']
+vowel ='aeiouAEIOU'
+count = 0
+for i in string : 
+    if i not in vowel:
+        count = count + 1
+print(count)
+print(oct(67))"""
 
+"""take = int(input())
+print(take * take)"""
 
-
-
+# Reverse a string but remove the vowels
+string = input("Enter a string: ")
+vowels = "aeiouAEIOU"
+filtered = ''
+for ch in string:
+    if ch not in vowels:
+        filtered += ch
+reversed_string = filtered[::-1]
+print(reversed_string)
