@@ -60,15 +60,26 @@ for i in string :
 print(count)
 print(oct(67))"""
 
-"""take = int(input())
-print(take * take)"""
+take = input()
+for i in range(len(take)):
+    print(int(take[i])*int(take[i]))
 
 # Reverse a string but remove the vowels
-string = input("Enter a string: ")
-vowels = "aeiouAEIOU"
-filtered = ''
-for ch in string:
-    if ch not in vowels:
-        filtered += ch
-reversed_string = filtered[::-1]
-print(reversed_string)
+"""string = input("Enter a string: ")
+var    = ""
+for i in range(len(string)-1,-1,-1):
+    var +=string[i]
+print(var)
+#print(var)
+string = input()
+vowels = "AEIUOaeiou"
+vowels_count = 0
+consonennt_count = 0
+for i in range(len(string)):
+    if string[i] not in vowels:
+        consonennt_count += 1
+    else :
+        vowels_count     += 1
+print("vowels:",vowels_count,"","consonennts:",consonennt_count)"""
+
+
